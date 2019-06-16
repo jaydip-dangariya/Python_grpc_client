@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package com.anand.grpc;
+
+message User {
+    string id = 1;
+    string name = 2;
+    repeated string hobbies = 3;
+}
+
+// Request payload
+message AddUserRequest {
+
+    string name = 1;
+
+    // This defines a strongly typed list of String
+    repeated string hobbies = 2;
+
+    message Response {
+        User user = 1;
+    }
+}
+
+message GetAllUserRequest {
+    message Response {
+        repeated User users = 1;
+        User user = 2;
+    }
+}
+
+// Defining a Service, a Service can have multiple RPC operations
+service UserService {
+// Define a RPC operation
+    rpc addUser (AddUserRequest) returns (AddUserRequest.Response);
+    rpc getAllUser (GetAllUserRequest) returns (GetAllUserRequest.Response);
+    rpc getAllUserWithStream (GetAllUserRequest) returns (stream GetAllUserRequest.Response);
+}
