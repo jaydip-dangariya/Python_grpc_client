@@ -11,7 +11,7 @@ Follow below step to up and running grpc python client
 1)clone project and go to the inside the project
 
 2) python grpc_client.py 0
-        0 - Insert new user (curruntly not imlimented()
+        0 - Insert new user (curruntly not imlimented)
         1 - get all existing inserted user
         
         
